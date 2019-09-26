@@ -6,12 +6,12 @@ using namespace std;
 
 int main()
 {
-    KsiazkaAdresowa KsiazkaAdresowa;
+    KsiazkaAdresowa ksiazkaAdresowa;
 
-    KsiazkaAdresowa.rejestracjaUzytkownika();
-    KsiazkaAdresowa.rejestracjaUzytkownika();
+    //ksiazkaAdresowa.rejestracjaUzytkownika();
+    //ksiazkaAdresowa.rejestracjaUzytkownika();
 
-    KsiazkaAdresowa.wypiszWszystkichUzytkownikow();
+    ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
 
     return 0;
 }
