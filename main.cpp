@@ -15,5 +15,7 @@ int main()
 
     ksiazkaAdresowa.logowanieUzytkownika();
 
+    ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
+
     return 0;
 }
