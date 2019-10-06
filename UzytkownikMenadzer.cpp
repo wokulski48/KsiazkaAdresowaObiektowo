@@ -120,3 +120,9 @@ void UzytkownikMenadzer::zmianaHaslaZalogowanegoUzytkownika()
     }
     plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
 }
+
+void UzytkownikMenadzer::wylogujUzytkownika()
+{
+    idZalogowanegoUzytkownika = 0;
+    //adresaci.clear();
+}
