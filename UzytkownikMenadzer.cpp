@@ -126,3 +126,8 @@ void UzytkownikMenadzer::wylogujUzytkownika()
     idZalogowanegoUzytkownika = 0;
     //adresaci.clear();
 }
+
+int UzytkownikMenadzer::pobierzIdZalogowanegoUzytkownika()
+{
+    return idZalogowanegoUzytkownika;
+}
