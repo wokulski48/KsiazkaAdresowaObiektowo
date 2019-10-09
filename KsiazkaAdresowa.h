@@ -25,6 +25,7 @@ public:
     void wylogujUzytkownika();
     void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
     int dodajAdresata();
+    void wyswietlWszystkichAdresatow();
 };
 
 #endif

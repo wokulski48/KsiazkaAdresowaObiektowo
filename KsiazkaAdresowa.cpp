@@ -34,3 +34,8 @@ int KsiazkaAdresowa::dodajAdresata()
 {
     adresatMenadzer.dodajAdresata(uzytkownikMenadzer.pobierzIdZalogowanegoUzytkownika(), adresatMenadzer.pobierzIdOstatniegoAdresata());
 }
+
+void KsiazkaAdresowa::wyswietlWszystkichAdresatow()
+{
+    adresatMenadzer.wyswietlWszystkichAdresatow();
+}

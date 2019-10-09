@@ -23,5 +23,7 @@ int main()
 
     //ksiazkaAdresowa.dodajAdresata();
 
+    //ksiazkaAdresowa.wyswietlWszystkichAdresatow();
+
     return 0;
 }
