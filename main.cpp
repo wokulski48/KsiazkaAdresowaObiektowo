@@ -19,7 +19,9 @@ int main()
 
     //ksiazkaAdresowa.wylogujUzytkownika();
 
-    ksiazkaAdresowa.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+    //ksiazkaAdresowa.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
+
+    //ksiazkaAdresowa.dodajAdresata();
 
     return 0;
 }

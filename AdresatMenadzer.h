@@ -12,11 +12,16 @@ using namespace std;
 class AdresatMenadzer
 {
     vector <Adresat> adresaci;
+
     PlikZAdresatami plikZAdresatami;
+
+    Adresat podajDaneNowegoAdresata(int idZalogowanegoUzytkownika, int idOstatniegoAdresata);
 
 public:
     AdresatMenadzer(string nazwaPlikuZAdresatami) : plikZAdresatami(nazwaPlikuZAdresatami) {};
     void wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
+    int dodajAdresata(int idZalogowanegoUzytkownika, int idOstatniegoAdresata);
+    int pobierzIdOstatniegoAdresata();
 };
 
 #endif

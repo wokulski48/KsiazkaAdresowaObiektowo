@@ -29,3 +29,8 @@ void KsiazkaAdresowa::wczytajAdresatowZalogowanegoUzytkownikaZPliku()
 {
     adresatMenadzer.wczytajAdresatowZalogowanegoUzytkownikaZPliku(uzytkownikMenadzer.pobierzIdZalogowanegoUzytkownika());
 }
+
+int KsiazkaAdresowa::dodajAdresata()
+{
+    adresatMenadzer.dodajAdresata(uzytkownikMenadzer.pobierzIdZalogowanegoUzytkownika(), adresatMenadzer.pobierzIdOstatniegoAdresata());
+}
