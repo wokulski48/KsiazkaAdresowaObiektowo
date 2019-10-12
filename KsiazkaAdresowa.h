@@ -13,8 +13,10 @@ class KsiazkaAdresowa
     UzytkownikMenadzer uzytkownikMenadzer;
     AdresatMenadzer adresatMenadzer;
 
+    char wybierzOpcjeZMenuGlownego();
+
 public:
-    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami) : uzytkownikMenadzer(nazwaPlikuZUzytkownikami) , adresatMenadzer(nazwaPlikuZAdresatami)
+    KsiazkaAdresowa(string nazwaPlikuZUzytkownikami) : uzytkownikMenadzer(nazwaPlikuZUzytkownikami, 0)
     {
         uzytkownikMenadzer.wczytajUzytkownikowZPliku();
     };
@@ -26,6 +28,7 @@ public:
     void wczytajAdresatowZalogowanegoUzytkownikaZPliku();
     int dodajAdresata();
     void wyswietlWszystkichAdresatow();
+    void menuGlowneProgramu();
 };
 
 #endif

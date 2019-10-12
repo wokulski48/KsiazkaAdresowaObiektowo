@@ -22,7 +22,6 @@ class PlikZAdresatami
     bool czyPlikJestPusty(fstream &plikTekstowy);
 
 public:
-    PlikZAdresatami(string NAZWAPLIKUZUZADRESATAMI) : nazwaPlikuZAdresatami(NAZWAPLIKUZUZADRESATAMI) {};
     vector <Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
     int pobierzIdOstatniegoAdresata();
     void dopiszAdresataDoPliku(Adresat adresat);

@@ -19,7 +19,6 @@ class AdresatMenadzer
     void wyswietlDaneAdresata(Adresat adresat);
 
 public:
-    AdresatMenadzer(string nazwaPlikuZAdresatami) : plikZAdresatami(nazwaPlikuZAdresatami) {};
     void wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
     int dodajAdresata(int idZalogowanegoUzytkownika, int idOstatniegoAdresata);
     int pobierzIdOstatniegoAdresata();
