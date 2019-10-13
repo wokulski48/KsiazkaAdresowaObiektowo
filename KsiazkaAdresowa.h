@@ -14,6 +14,7 @@ class KsiazkaAdresowa
     AdresatMenadzer adresatMenadzer;
 
     char wybierzOpcjeZMenuGlownego();
+    char wybierzOpcjeZMenuUzytkownika();
 
 public:
     KsiazkaAdresowa(string nazwaPlikuZUzytkownikami) : uzytkownikMenadzer(nazwaPlikuZUzytkownikami, 0)

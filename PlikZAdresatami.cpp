@@ -155,3 +155,8 @@ bool PlikZAdresatami::czyPlikJestPusty(fstream &plikTekstowy)
     else
         return false;
 }
+
+void PlikZAdresatami::ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata)
+{
+    idOstatniegoAdresata = noweIdOstatniegoAdresata;
+}

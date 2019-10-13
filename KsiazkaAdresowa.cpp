@@ -57,6 +57,33 @@ char KsiazkaAdresowa::wybierzOpcjeZMenuGlownego()
     return wybor;
 }
 
+char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika()
+{
+    char wybor;
+
+    system("cls");
+    cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
+    cout << "---------------------------" << endl;
+    cout << "1. Dodaj adresata" << endl;
+    /*
+    cout << "2. Wyszukaj po imieniu" << endl;
+    cout << "3. Wyszukaj po nazwisku" << endl;
+    */
+    cout << "4. Wyswietl adresatow" << endl;
+    /*
+    cout << "5. Usun adresata" << endl;
+    cout << "6. Edytuj adresata" << endl;
+    cout << "---------------------------" << endl;
+    cout << "7. Zmien haslo" << endl;
+    */
+    cout << "8. Wyloguj sie" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Twoj wybor: ";
+    wybor = MetodyPomocnicze::wczytajZnak();
+
+    return wybor;
+}
+
 void KsiazkaAdresowa::menuGlowneProgramu()
 {
     char wybor;
@@ -81,6 +108,30 @@ void KsiazkaAdresowa::menuGlowneProgramu()
             default:
                 cout << endl << "Nie ma takiej opcji w menu." << endl << endl;
                 system("pause");
+                break;
+            }
+        }
+        else
+        {
+            if (adresatMenadzer.pobierzAdresaci().empty() == true)
+                // Pobieramy idOstatniegoAdresata, po to aby zoptymalizowac program.
+                // Dzieki temu, kiedy uztykwonik bedzie dodawal nowego adresata
+                // to nie bedziemy musieli jeszcze raz ustalac idOstatniegoAdresata
+                adresatMenadzer.wczytajAdresatowZalogowanegoUzytkownikaZPliku(uzytkownikMenadzer.pobierzIdZalogowanegoUzytkownika());
+
+            wybor = wybierzOpcjeZMenuUzytkownika();
+
+            switch (wybor)
+            {
+            case '1':
+                adresatMenadzer.ustawIdOstatniegoAdresata(adresatMenadzer.dodajAdresata(uzytkownikMenadzer.pobierzIdZalogowanegoUzytkownika(), adresatMenadzer.pobierzIdOstatniegoAdresata()));
+                break;
+            case '4':
+                adresatMenadzer.wyswietlWszystkichAdresatow();
+                break;
+            case '8':
+                uzytkownikMenadzer.ustawIdZalogowanegoUzytkownika(0);
+                adresatMenadzer.pobierzAdresaci().clear();
                 break;
             }
         }

@@ -23,6 +23,8 @@ public:
     int dodajAdresata(int idZalogowanegoUzytkownika, int idOstatniegoAdresata);
     int pobierzIdOstatniegoAdresata();
     void wyswietlWszystkichAdresatow();
+    vector <Adresat> pobierzAdresaci();
+    void ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata);
 };
 
 #endif

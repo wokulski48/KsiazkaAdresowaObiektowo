@@ -80,3 +80,13 @@ void AdresatMenadzer::wyswietlDaneAdresata(Adresat adresat)
     cout << "Email:              " << adresat.pobierzEmail() << endl;
     cout << "Adres:              " << adresat.pobierzAdres() << endl;
 }
+
+vector <Adresat> AdresatMenadzer::pobierzAdresaci()
+{
+    return adresaci;
+}
+
+void AdresatMenadzer::ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata)
+{
+    plikZAdresatami.ustawIdOstatniegoAdresata(noweIdOstatniegoAdresata);
+}
