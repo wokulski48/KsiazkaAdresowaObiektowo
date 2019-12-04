@@ -7,7 +7,7 @@ void AdresatMenadzer::wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogo
 
 int AdresatMenadzer::pobierzIdOstatniegoAdresata()
 {
-    plikZAdresatami.pobierzIdOstatniegoAdresata();
+    return plikZAdresatami.pobierzIdOstatniegoAdresata();
 }
 
 int AdresatMenadzer::dodajAdresata(int idZalogowanegoUzytkownika, int idOstatniegoAdresata)

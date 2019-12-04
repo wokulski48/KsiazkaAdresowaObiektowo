@@ -11,9 +11,9 @@ using namespace std;
 
 class PlikZAdresatami
 {
-    const string nazwaPlikuZAdresatami;
+    const string nazwaPlikuZAdresatami = "bazaDanychAdresatow.txt";
 
-    int idOstatniegoAdresata;
+    int idOstatniegoAdresata = 0;
 
     int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
     int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);

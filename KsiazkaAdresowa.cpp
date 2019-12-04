@@ -114,10 +114,12 @@ void KsiazkaAdresowa::menuGlowneProgramu()
         else
         {
             if (adresatMenadzer.pobierzAdresaci().empty() == true)
+            {
                 // Pobieramy idOstatniegoAdresata, po to aby zoptymalizowac program.
                 // Dzieki temu, kiedy uztykwonik bedzie dodawal nowego adresata
                 // to nie bedziemy musieli jeszcze raz ustalac idOstatniegoAdresata
                 adresatMenadzer.wczytajAdresatowZalogowanegoUzytkownikaZPliku(uzytkownikMenadzer.pobierzIdZalogowanegoUzytkownika());
+            }
 
             wybor = wybierzOpcjeZMenuUzytkownika();
 
