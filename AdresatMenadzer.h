@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <limits>
 
 #include "Adresat.h"
 #include "PlikZAdresatami.h"
@@ -12,6 +13,7 @@ using namespace std;
 class AdresatMenadzer
 {
     vector <Adresat> adresaci;
+    vector <Adresat> *w_adresaci;
 
     PlikZAdresatami plikZAdresatami;
 
@@ -23,8 +25,9 @@ public:
     int dodajAdresata(int idZalogowanegoUzytkownika, int idOstatniegoAdresata);
     int pobierzIdOstatniegoAdresata();
     void wyswietlWszystkichAdresatow();
-    vector <Adresat> pobierzAdresaci();
+    vector <Adresat>* pobierzAdresaci();
     void ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata);
+    void edytujAdresata();
 };
 
 #endif

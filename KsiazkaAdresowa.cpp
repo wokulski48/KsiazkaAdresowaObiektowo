@@ -72,7 +72,9 @@ char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika()
     cout << "4. Wyswietl adresatow" << endl;
     /*
     cout << "5. Usun adresata" << endl;
+    */
     cout << "6. Edytuj adresata" << endl;
+    /*
     cout << "---------------------------" << endl;
     cout << "7. Zmien haslo" << endl;
     */
@@ -113,7 +115,7 @@ void KsiazkaAdresowa::menuGlowneProgramu()
         }
         else
         {
-            if (adresatMenadzer.pobierzAdresaci().empty() == true)
+            if (adresatMenadzer.pobierzAdresaci()->empty() == true)
             {
                 // Pobieramy idOstatniegoAdresata, po to aby zoptymalizowac program.
                 // Dzieki temu, kiedy uztykwonik bedzie dodawal nowego adresata
@@ -131,9 +133,23 @@ void KsiazkaAdresowa::menuGlowneProgramu()
             case '4':
                 adresatMenadzer.wyswietlWszystkichAdresatow();
                 break;
+            case '6':
+                if(adresatMenadzer.pobierzIdOstatniegoAdresata() == 0)
+                {
+                    system( "cls" );
+                    cout << "Baza danych nie zawiera Adresatow!" << endl;
+                    system("pause");
+                    system( "cls" );
+                }
+                else
+                {
+                    system( "cls" );
+                    adresatMenadzer.edytujAdresata();
+                }
+                break;
             case '8':
                 uzytkownikMenadzer.ustawIdZalogowanegoUzytkownika(0);
-                adresatMenadzer.pobierzAdresaci().clear();
+                adresatMenadzer.pobierzAdresaci()->clear();
                 break;
             }
         }

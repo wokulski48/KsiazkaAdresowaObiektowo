@@ -120,7 +120,7 @@ void PlikZAdresatami::dopiszAdresataDoPliku(Adresat adresat)
         }
         else
         {
-            plikTekstowy << endl << liniaZDanymiAdresata ;
+            plikTekstowy << endl << liniaZDanymiAdresata;
         }
     }
     else
@@ -158,4 +158,97 @@ bool PlikZAdresatami::czyPlikJestPusty(fstream &plikTekstowy)
 void PlikZAdresatami::ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata)
 {
     idOstatniegoAdresata = noweIdOstatniegoAdresata;
+}
+
+void PlikZAdresatami::zapiszBazeDanychAdresatow(int idEdytowanegoAdresata, int typOperacji, vector <Adresat> adresaci)
+{
+    //typOperacji == 0 -> usuwanie adresata
+    //typOperacji == 1 -> edycja adresata
+
+    int numerWierszaWBazieDanychAdresatow = 1;
+
+    string pobranaLiniaTekstuZBazyDanych = "";
+
+    fstream bazaDanychAdresatow;
+    //Odczyt z pliku
+    bazaDanychAdresatow.open("bazaDanychAdresatow.txt", ios::in);
+
+    fstream tymczasowaBazaDanychAdresatow;
+    //Zapis do pliku
+    tymczasowaBazaDanychAdresatow.open("tymczasowaBazaDanychAdresatow.txt", ios::out);
+
+    if(bazaDanychAdresatow.good() == true)
+    {
+        if(typOperacji == 0)
+        {
+            while(getline(bazaDanychAdresatow, pobranaLiniaTekstuZBazyDanych))
+            {
+                if(atoi(pobranaLiniaTekstuZBazyDanych.substr(0, 1).c_str()) != idEdytowanegoAdresata)
+                {
+                    tymczasowaBazaDanychAdresatow << pobranaLiniaTekstuZBazyDanych << endl;
+                }
+            }
+        }
+        else
+        {
+            while(getline(bazaDanychAdresatow, pobranaLiniaTekstuZBazyDanych))
+            {
+                if (numerWierszaWBazieDanychAdresatow != 1)
+                {
+                    tymczasowaBazaDanychAdresatow << endl;
+                }
+
+                if(atoi(pobranaLiniaTekstuZBazyDanych.substr(0, podajPozycjeZnakuRozdzialuIdAdresata(pobranaLiniaTekstuZBazyDanych)).c_str()) == idEdytowanegoAdresata)
+                {
+                    int indeksEdytowanegoAdresata=0;
+
+                    for(indeksEdytowanegoAdresata=0; indeksEdytowanegoAdresata<adresaci.size(); indeksEdytowanegoAdresata++)
+                    {
+                        if(adresaci[indeksEdytowanegoAdresata].pobierzId() == idEdytowanegoAdresata)
+                        {
+                            break;
+                        }
+                    }
+
+                    tymczasowaBazaDanychAdresatow << adresaci[indeksEdytowanegoAdresata].pobierzId() << '|';
+                    tymczasowaBazaDanychAdresatow << adresaci[indeksEdytowanegoAdresata].pobierzIdUzytkownika() << '|';
+                    tymczasowaBazaDanychAdresatow << adresaci[indeksEdytowanegoAdresata].pobierzImie() << '|';
+                    tymczasowaBazaDanychAdresatow << adresaci[indeksEdytowanegoAdresata].pobierzNazwisko() << '|';
+                    tymczasowaBazaDanychAdresatow << adresaci[indeksEdytowanegoAdresata].pobierzNumerTelefonu() << '|';
+                    tymczasowaBazaDanychAdresatow << adresaci[indeksEdytowanegoAdresata].pobierzEmail() << '|';
+                    tymczasowaBazaDanychAdresatow << adresaci[indeksEdytowanegoAdresata].pobierzAdres() << '|';
+                }
+                else
+                {
+                    tymczasowaBazaDanychAdresatow << pobranaLiniaTekstuZBazyDanych;
+                }
+
+                numerWierszaWBazieDanychAdresatow++;
+            }
+        }
+    }
+
+    bazaDanychAdresatow.close();
+//Koniec odczytu pliku
+
+    tymczasowaBazaDanychAdresatow.close();
+//Koniec zapisu do pliku
+
+    remove("bazaDanychAdresatow.txt");
+
+    rename("tymczasowaBazaDanychAdresatow.txt", "bazaDanychAdresatow.txt");
+}
+
+int PlikZAdresatami::podajPozycjeZnakuRozdzialuIdAdresata(string pobranaLiniaTekstuZBazyDanych)
+{
+    int pozycjaZnakuRozdzialuIdAdresata = 0;
+
+    char znakuRozdzialuIdAdresata = '|';
+
+    while(znakuRozdzialuIdAdresata != pobranaLiniaTekstuZBazyDanych[pozycjaZnakuRozdzialuIdAdresata])
+    {
+        pozycjaZnakuRozdzialuIdAdresata++;
+    }
+
+    return pozycjaZnakuRozdzialuIdAdresata;
 }

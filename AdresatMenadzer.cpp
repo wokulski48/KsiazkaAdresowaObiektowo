@@ -81,12 +81,149 @@ void AdresatMenadzer::wyswietlDaneAdresata(Adresat adresat)
     cout << "Adres:              " << adresat.pobierzAdres() << endl;
 }
 
-vector <Adresat> AdresatMenadzer::pobierzAdresaci()
+vector <Adresat>* AdresatMenadzer::pobierzAdresaci()
 {
-    return adresaci;
+    w_adresaci = &adresaci;
+    return w_adresaci;
 }
 
 void AdresatMenadzer::ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata)
 {
     plikZAdresatami.ustawIdOstatniegoAdresata(noweIdOstatniegoAdresata);
+}
+
+void AdresatMenadzer::edytujAdresata()
+{
+    int id, indeksAdresata = 0;
+    string opcjaMenu = "";
+
+    cout << "EDYTUJ ADRESATA" << endl;
+    cout << "Podaj id: ";
+    cin >> id;
+
+    for(indeksAdresata=0; indeksAdresata<adresaci.size(); indeksAdresata++)
+    {
+        if(adresaci[indeksAdresata].pobierzId() == id)
+        {
+            break;
+        }
+    }
+
+    if(indeksAdresata == adresaci.size())
+    {
+        system( "cls" );
+        cout << "Adresat o podanym ID nie istnieje!";
+        Sleep(1500);
+        system( "cls" );
+        return;
+    }
+
+    system( "cls" );
+    cout << "EDYTUJ ADRESATA O ID: " << id << endl;
+    cout << "1 - imie" << endl;
+    cout << "2 - nazwisko" << endl;
+    cout << "3 - numer telefonu" << endl;
+    cout << "4 - email" << endl;
+    cout << "5 - adres" << endl;
+    cout << "6 - powrot do menu" << endl;
+
+    do
+    {
+        cout << "Twoj wybor:";
+        cin >> opcjaMenu;
+    }
+    while (opcjaMenu != "1" && opcjaMenu != "2" && opcjaMenu != "3" && opcjaMenu != "4" && opcjaMenu != "5" && opcjaMenu != "6");
+
+    if(opcjaMenu == "1")
+    {
+        string imie = "";
+
+        system( "cls" );
+        cout << "EDYTUJ ADRESATA O ID: " << id << endl;
+        cout << "Podaj imie: ";
+        cin >> imie;
+
+        adresaci[indeksAdresata].ustawImie(imie);
+
+        plikZAdresatami.zapiszBazeDanychAdresatow(id, 1, adresaci);
+
+        cout << endl << "Dane adresata zostaly zaktualizowane!";
+        Sleep(1500);
+        system( "cls" );
+    }
+    else if(opcjaMenu == "2")
+    {
+        string nazwisko = "";
+
+        system( "cls" );
+        cout << "EDYTUJ ADRESATA O ID: " << id << endl;
+        cout << "Podaj nazwisko: ";
+        cin >> nazwisko;
+
+        adresaci[indeksAdresata].ustawNazwisko(nazwisko);
+
+        plikZAdresatami.zapiszBazeDanychAdresatow(id, 1, adresaci);
+
+        cout << endl << "Dane adresata zostaly zaktualizowane!";
+        Sleep(1500);
+        system( "cls" );
+    }
+    else if(opcjaMenu == "3")
+    {
+        string numerTelefonu = "";
+
+        system( "cls" );
+        cout << "EDYTUJ ADRESATA O ID: " << id << endl;
+        cout << "Podaj numer telefonu: ";
+        cin.ignore(numeric_limits < streamsize >::max(), '\n' );
+        getline(cin, numerTelefonu);
+
+        adresaci[indeksAdresata].ustawNumerTelefonu(numerTelefonu);
+
+        plikZAdresatami.zapiszBazeDanychAdresatow(id, 1, adresaci);
+
+        cout << endl << "Dane adresata zostaly zaktualizowane!";
+        Sleep(1500);
+        system( "cls" );
+    }
+    else if(opcjaMenu == "4")
+    {
+        string email = "";
+
+        system( "cls" );
+        cout << "EDYTUJ ADRESATA O ID: " << id << endl;
+        cout << "Podaj email: ";
+        cin >> email;
+
+        adresaci[indeksAdresata].ustawEmail(email);
+
+        plikZAdresatami.zapiszBazeDanychAdresatow(id, 1, adresaci);
+
+        cout << endl << "Dane adresata zostaly zaktualizowane!";
+        Sleep(1500);
+        system( "cls" );
+    }
+    else if(opcjaMenu == "5")
+    {
+        string adres = "";
+
+        system( "cls" );
+        cout << "EDYTUJ ADRESATA O ID: " << id << endl;
+        cout << "Podaj adres: ";
+        cin.ignore(numeric_limits < streamsize >::max(), '\n' );
+        getline(cin, adres);
+
+        adresaci[indeksAdresata].ustawAdres(adres);
+
+        plikZAdresatami.zapiszBazeDanychAdresatow(id, 1, adresaci);
+
+        cout << endl << "Dane adresata zostaly zaktualizowane!";
+        Sleep(1500);
+        system( "cls" );
+    }
+    else
+    {
+        system( "cls" );
+        return;
+    }
 }
