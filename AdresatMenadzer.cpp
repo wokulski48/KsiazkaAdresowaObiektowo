@@ -313,3 +313,63 @@ int AdresatMenadzer::usunAdresata()
         system("pause");
     }
 }
+
+void AdresatMenadzer::wyszukajPoImieniu()
+{
+    system("cls");
+    if (!adresaci.empty())
+    {
+        string imie = "";
+        int liczbaWyszukanychAdresatow = 0;
+
+        cout << "WYSZUKAJ PO IMIENIU" << endl;
+        cout << "Podaj imie: ";
+        cin >> imie;
+
+        for(int i=0; i<adresaci.size(); i++)
+        {
+            if(imie == adresaci[i].pobierzImie())
+            {
+                if(liczbaWyszukanychAdresatow == 0)
+                {
+                    cout << endl;
+                    cout << "Id." << '\t';
+                    cout << "Imie" << '\t';
+                    cout << "Nazw." << '\t';
+                    cout << "Telefon" << '\t' << '\t';
+                    cout << "Email" << '\t' << '\t' << '\t';
+                    cout << "Adres" << '\t';
+                    cout << endl;
+                }
+
+                cout << adresaci[i].pobierzId() << '\t';
+                cout << adresaci[i].pobierzImie() << '\t';
+                cout << adresaci[i].pobierzNazwisko() << '\t';
+                cout << adresaci[i].pobierzNumerTelefonu() << '\t';
+                cout << adresaci[i].pobierzEmail() << '\t';
+                cout << adresaci[i].pobierzAdres() << endl;
+                liczbaWyszukanychAdresatow++;
+            }
+        }
+
+        if(liczbaWyszukanychAdresatow == 0)
+        {
+            system( "cls" );
+            cout << "Nie znaleziono Adresatow!";
+            Sleep(1500);
+            system( "cls" );
+            return;
+        }
+        else
+        {
+            cout << endl << "Nacisnij dowolny klawisz, aby powrocic do menu glownego...";
+            system("pause");
+            system( "cls" );
+        }
+    }
+    else
+    {
+        cout << "Ksiazka adresowa jest pusta." << endl << endl;
+        system("pause");
+    }
+}

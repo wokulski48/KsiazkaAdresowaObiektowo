@@ -65,8 +65,8 @@ char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika()
     cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
     cout << "---------------------------" << endl;
     cout << "1. Dodaj adresata" << endl;
-    /*
     cout << "2. Wyszukaj po imieniu" << endl;
+    /*
     cout << "3. Wyszukaj po nazwisku" << endl;
     */
     cout << "4. Wyswietl adresatow" << endl;
@@ -127,6 +127,9 @@ void KsiazkaAdresowa::menuGlowneProgramu()
             {
             case '1':
                 adresatMenadzer.ustawIdOstatniegoAdresata(adresatMenadzer.dodajAdresata(uzytkownikMenadzer.pobierzIdZalogowanegoUzytkownika(), adresatMenadzer.pobierzIdOstatniegoAdresata()));
+                break;
+            case '2':
+                adresatMenadzer.wyszukajPoImieniu();
                 break;
             case '4':
                 adresatMenadzer.wyswietlWszystkichAdresatow();

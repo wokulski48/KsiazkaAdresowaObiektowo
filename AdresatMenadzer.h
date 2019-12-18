@@ -29,6 +29,7 @@ public:
     void ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata);
     void edytujAdresata();
     int usunAdresata();
+    void wyszukajPoImieniu();
 };
 
 #endif
