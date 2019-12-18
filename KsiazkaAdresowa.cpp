@@ -70,9 +70,7 @@ char KsiazkaAdresowa::wybierzOpcjeZMenuUzytkownika()
     cout << "3. Wyszukaj po nazwisku" << endl;
     */
     cout << "4. Wyswietl adresatow" << endl;
-    /*
     cout << "5. Usun adresata" << endl;
-    */
     cout << "6. Edytuj adresata" << endl;
     /*
     cout << "---------------------------" << endl;
@@ -133,19 +131,11 @@ void KsiazkaAdresowa::menuGlowneProgramu()
             case '4':
                 adresatMenadzer.wyswietlWszystkichAdresatow();
                 break;
+            case '5':
+                adresatMenadzer.ustawIdOstatniegoAdresata(adresatMenadzer.usunAdresata());
+                break;
             case '6':
-                if(adresatMenadzer.pobierzIdOstatniegoAdresata() == 0)
-                {
-                    system( "cls" );
-                    cout << "Baza danych nie zawiera Adresatow!" << endl;
-                    system("pause");
-                    system( "cls" );
-                }
-                else
-                {
-                    system( "cls" );
-                    adresatMenadzer.edytujAdresata();
-                }
+                adresatMenadzer.edytujAdresata();
                 break;
             case '8':
                 uzytkownikMenadzer.ustawIdZalogowanegoUzytkownika(0);

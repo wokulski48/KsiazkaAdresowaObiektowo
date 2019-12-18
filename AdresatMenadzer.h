@@ -28,6 +28,7 @@ public:
     vector <Adresat>* pobierzAdresaci();
     void ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata);
     void edytujAdresata();
+    int usunAdresata();
 };
 
 #endif

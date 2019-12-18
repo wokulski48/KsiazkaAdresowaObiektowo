@@ -66,7 +66,7 @@ void AdresatMenadzer::wyswietlWszystkichAdresatow()
     }
     else
     {
-        cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
+        cout << "Ksiazka adresowa jest pusta." << endl << endl;
     }
     system("pause");
 }
@@ -94,136 +94,222 @@ void AdresatMenadzer::ustawIdOstatniegoAdresata(int noweIdOstatniegoAdresata)
 
 void AdresatMenadzer::edytujAdresata()
 {
-    int id, indeksAdresata = 0;
-    string opcjaMenu = "";
-
-    cout << "EDYTUJ ADRESATA" << endl;
-    cout << "Podaj id: ";
-    cin >> id;
-
-    for(indeksAdresata=0; indeksAdresata<adresaci.size(); indeksAdresata++)
+    system("cls");
+    if (!adresaci.empty())
     {
-        if(adresaci[indeksAdresata].pobierzId() == id)
+        int id, indeksAdresata = 0;
+        string opcjaMenu = "";
+
+        cout << "EDYTUJ ADRESATA" << endl;
+        cout << "Podaj id: ";
+        cin >> id;
+
+        for(indeksAdresata=0; indeksAdresata<adresaci.size(); indeksAdresata++)
         {
-            break;
+            if(adresaci[indeksAdresata].pobierzId() == id)
+            {
+                break;
+            }
         }
-    }
 
-    if(indeksAdresata == adresaci.size())
-    {
-        system( "cls" );
-        cout << "Adresat o podanym ID nie istnieje!";
-        Sleep(1500);
-        system( "cls" );
-        return;
-    }
-
-    system( "cls" );
-    cout << "EDYTUJ ADRESATA O ID: " << id << endl;
-    cout << "1 - imie" << endl;
-    cout << "2 - nazwisko" << endl;
-    cout << "3 - numer telefonu" << endl;
-    cout << "4 - email" << endl;
-    cout << "5 - adres" << endl;
-    cout << "6 - powrot do menu" << endl;
-
-    do
-    {
-        cout << "Twoj wybor:";
-        cin >> opcjaMenu;
-    }
-    while (opcjaMenu != "1" && opcjaMenu != "2" && opcjaMenu != "3" && opcjaMenu != "4" && opcjaMenu != "5" && opcjaMenu != "6");
-
-    if(opcjaMenu == "1")
-    {
-        string imie = "";
+        if(indeksAdresata == adresaci.size())
+        {
+            system( "cls" );
+            cout << "Adresat o podanym ID nie istnieje!";
+            Sleep(1500);
+            system( "cls" );
+            return;
+        }
 
         system( "cls" );
         cout << "EDYTUJ ADRESATA O ID: " << id << endl;
-        cout << "Podaj imie: ";
-        cin >> imie;
+        cout << "1 - imie" << endl;
+        cout << "2 - nazwisko" << endl;
+        cout << "3 - numer telefonu" << endl;
+        cout << "4 - email" << endl;
+        cout << "5 - adres" << endl;
+        cout << "6 - powrot do menu" << endl;
 
-        adresaci[indeksAdresata].ustawImie(imie);
+        do
+        {
+            cout << "Twoj wybor:";
+            cin >> opcjaMenu;
+        }
+        while (opcjaMenu != "1" && opcjaMenu != "2" && opcjaMenu != "3" && opcjaMenu != "4" && opcjaMenu != "5" && opcjaMenu != "6");
 
-        plikZAdresatami.zapiszBazeDanychAdresatow(id, 1, adresaci);
+        if(opcjaMenu == "1")
+        {
+            string imie = "";
 
-        cout << endl << "Dane adresata zostaly zaktualizowane!";
-        Sleep(1500);
-        system( "cls" );
-    }
-    else if(opcjaMenu == "2")
-    {
-        string nazwisko = "";
+            system( "cls" );
+            cout << "EDYTUJ ADRESATA O ID: " << id << endl;
+            cout << "Podaj imie: ";
+            cin >> imie;
 
-        system( "cls" );
-        cout << "EDYTUJ ADRESATA O ID: " << id << endl;
-        cout << "Podaj nazwisko: ";
-        cin >> nazwisko;
+            adresaci[indeksAdresata].ustawImie(imie);
 
-        adresaci[indeksAdresata].ustawNazwisko(nazwisko);
+            plikZAdresatami.zapiszBazeDanychAdresatow(id, 1, adresaci);
 
-        plikZAdresatami.zapiszBazeDanychAdresatow(id, 1, adresaci);
+            cout << endl << "Dane adresata zostaly zaktualizowane!";
+            Sleep(1500);
+            system( "cls" );
+        }
+        else if(opcjaMenu == "2")
+        {
+            string nazwisko = "";
 
-        cout << endl << "Dane adresata zostaly zaktualizowane!";
-        Sleep(1500);
-        system( "cls" );
-    }
-    else if(opcjaMenu == "3")
-    {
-        string numerTelefonu = "";
+            system( "cls" );
+            cout << "EDYTUJ ADRESATA O ID: " << id << endl;
+            cout << "Podaj nazwisko: ";
+            cin >> nazwisko;
 
-        system( "cls" );
-        cout << "EDYTUJ ADRESATA O ID: " << id << endl;
-        cout << "Podaj numer telefonu: ";
-        cin.ignore(numeric_limits < streamsize >::max(), '\n' );
-        getline(cin, numerTelefonu);
+            adresaci[indeksAdresata].ustawNazwisko(nazwisko);
 
-        adresaci[indeksAdresata].ustawNumerTelefonu(numerTelefonu);
+            plikZAdresatami.zapiszBazeDanychAdresatow(id, 1, adresaci);
 
-        plikZAdresatami.zapiszBazeDanychAdresatow(id, 1, adresaci);
+            cout << endl << "Dane adresata zostaly zaktualizowane!";
+            Sleep(1500);
+            system( "cls" );
+        }
+        else if(opcjaMenu == "3")
+        {
+            string numerTelefonu = "";
 
-        cout << endl << "Dane adresata zostaly zaktualizowane!";
-        Sleep(1500);
-        system( "cls" );
-    }
-    else if(opcjaMenu == "4")
-    {
-        string email = "";
+            system( "cls" );
+            cout << "EDYTUJ ADRESATA O ID: " << id << endl;
+            cout << "Podaj numer telefonu: ";
+            cin.ignore(numeric_limits < streamsize >::max(), '\n' );
+            getline(cin, numerTelefonu);
 
-        system( "cls" );
-        cout << "EDYTUJ ADRESATA O ID: " << id << endl;
-        cout << "Podaj email: ";
-        cin >> email;
+            adresaci[indeksAdresata].ustawNumerTelefonu(numerTelefonu);
 
-        adresaci[indeksAdresata].ustawEmail(email);
+            plikZAdresatami.zapiszBazeDanychAdresatow(id, 1, adresaci);
 
-        plikZAdresatami.zapiszBazeDanychAdresatow(id, 1, adresaci);
+            cout << endl << "Dane adresata zostaly zaktualizowane!";
+            Sleep(1500);
+            system( "cls" );
+        }
+        else if(opcjaMenu == "4")
+        {
+            string email = "";
 
-        cout << endl << "Dane adresata zostaly zaktualizowane!";
-        Sleep(1500);
-        system( "cls" );
-    }
-    else if(opcjaMenu == "5")
-    {
-        string adres = "";
+            system( "cls" );
+            cout << "EDYTUJ ADRESATA O ID: " << id << endl;
+            cout << "Podaj email: ";
+            cin >> email;
 
-        system( "cls" );
-        cout << "EDYTUJ ADRESATA O ID: " << id << endl;
-        cout << "Podaj adres: ";
-        cin.ignore(numeric_limits < streamsize >::max(), '\n' );
-        getline(cin, adres);
+            adresaci[indeksAdresata].ustawEmail(email);
 
-        adresaci[indeksAdresata].ustawAdres(adres);
+            plikZAdresatami.zapiszBazeDanychAdresatow(id, 1, adresaci);
 
-        plikZAdresatami.zapiszBazeDanychAdresatow(id, 1, adresaci);
+            cout << endl << "Dane adresata zostaly zaktualizowane!";
+            Sleep(1500);
+            system( "cls" );
+        }
+        else if(opcjaMenu == "5")
+        {
+            string adres = "";
 
-        cout << endl << "Dane adresata zostaly zaktualizowane!";
-        Sleep(1500);
-        system( "cls" );
+            system( "cls" );
+            cout << "EDYTUJ ADRESATA O ID: " << id << endl;
+            cout << "Podaj adres: ";
+            cin.ignore(numeric_limits < streamsize >::max(), '\n' );
+            getline(cin, adres);
+
+            adresaci[indeksAdresata].ustawAdres(adres);
+
+            plikZAdresatami.zapiszBazeDanychAdresatow(id, 1, adresaci);
+
+            cout << endl << "Dane adresata zostaly zaktualizowane!";
+            Sleep(1500);
+            system( "cls" );
+        }
+        else
+        {
+            system( "cls" );
+            return;
+        }
     }
     else
     {
-        system( "cls" );
-        return;
+        cout << "Ksiazka adresowa jest pusta." << endl << endl;
+        system("pause");
+    }
+}
+
+int AdresatMenadzer::usunAdresata()
+{
+    system("cls");
+    if (!adresaci.empty())
+    {
+        int id = 0, indeksAdresata = 0;
+        string potwierdzenieUsunieciaAdresata = "";
+
+        cout << "USUN ADRESATA" << endl;
+        cout << "Podaj id: ";
+        cin >> id;
+
+        for(indeksAdresata=0; indeksAdresata<adresaci.size(); indeksAdresata++)
+        {
+            if(adresaci[indeksAdresata].pobierzId() == id)
+            {
+                break;
+            }
+        }
+
+        if(indeksAdresata == adresaci.size())
+        {
+            system( "cls" );
+            cout << "Adresat o podanym ID nie istnieje!";
+            Sleep(1500);
+            system( "cls" );
+            return plikZAdresatami.pobierzIdOstatniegoAdresata();
+        }
+
+        cout << "Potwierdz usuniecie adresata klawiszem 't': ";
+        cin >> potwierdzenieUsunieciaAdresata;
+
+        if(potwierdzenieUsunieciaAdresata == "t")
+        {
+            adresaci.erase(adresaci.begin()+indeksAdresata);
+
+            //w_liczbaAdresatowGlobalna = w_liczbaAdresatowGlobalna - 1;
+
+            //for(int indeksAdresataGlobalnego=0; indeksAdresataGlobalnego<(*w_idAdresatowGlobalne).size(); indeksAdresataGlobalnego++)
+            //{
+            //    if((*w_idAdresatowGlobalne)[indeksAdresataGlobalnego] == id)
+            //    {
+            //        (*w_idAdresatowGlobalne).erase((*w_idAdresatowGlobalne).begin()+indeksAdresataGlobalnego);
+            //        break;
+            //    }
+            //}
+
+            plikZAdresatami.zapiszBazeDanychAdresatow(id, 0, adresaci);
+
+            cout << endl << "Adresat zostal usuniety z bazy danych!";
+            Sleep(1500);
+            system( "cls" );
+        }
+        else
+        {
+            cout << endl << "Nie usunieto adresata!";
+            Sleep(1500);
+            system( "cls" );
+        }
+
+        if(adresaci.empty())
+        {
+            return 0;
+        }
+        else
+        {
+            return adresaci[adresaci.size()].pobierzId();
+        }
+
+    }
+    else
+    {
+        cout << "Ksiazka adresowa jest pusta." << endl << endl;
+        system("pause");
     }
 }
