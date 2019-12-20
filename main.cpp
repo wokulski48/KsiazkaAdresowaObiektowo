@@ -10,22 +10,5 @@ int main()
 
     ksiazkaAdresowa.menuGlowneProgramu();
 
-    //ksiazkaAdresowa.rejestracjaUzytkownika();
-    //ksiazkaAdresowa.rejestracjaUzytkownika();
-
-    //ksiazkaAdresowa.wypiszWszystkichUzytkownikow();
-
-    //ksiazkaAdresowa.logowanieUzytkownika();
-
-    //ksiazkaAdresowa.zmianaHaslaZalogowanegoUzytkownika();
-
-    //ksiazkaAdresowa.wylogujUzytkownika();
-
-    //ksiazkaAdresowa.wczytajAdresatowZalogowanegoUzytkownikaZPliku();
-
-    //ksiazkaAdresowa.dodajAdresata();
-
-    //ksiazkaAdresowa.wyswietlWszystkichAdresatow();
-
     return 0;
 }

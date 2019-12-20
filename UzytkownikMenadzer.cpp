@@ -136,3 +136,62 @@ void UzytkownikMenadzer::ustawIdZalogowanegoUzytkownika(int noweIdZalogowanegoUz
 {
     idZalogowanegoUzytkownika = noweIdZalogowanegoUzytkownika;
 }
+
+void UzytkownikMenadzer::zmianaHaslaUzytkownika()
+{
+    system( "cls" );
+
+    string noweHasloUzytkownika = "";
+    int liczbaProbZmianHasla = 1;
+
+    cout << "ZMIANA HASLA UZYTKOWNIKA" << endl;
+    cout << "Podaj nowe haslo dla uzytkownika (" << uzytkownicy[idZalogowanegoUzytkownika-1].pobierzLogin() << "): ";
+
+    do
+    {
+        if(liczbaProbZmianHasla > 1)
+        {
+            cout << "Podaj inne haslo!";
+            Sleep(1500);
+            system( "cls" );
+            cout << "ZMIANA HASLA UZYTKOWNIKA" << endl;
+            cout << "Podaj nowe haslo dla uzytkownika (" << uzytkownicy[idZalogowanegoUzytkownika-1].pobierzLogin() << "): ";
+        }
+
+        cin >> noweHasloUzytkownika;
+        liczbaProbZmianHasla++;
+    }
+    while (noweHasloUzytkownika == uzytkownicy[idZalogowanegoUzytkownika-1].pobierzHaslo());
+
+    uzytkownicy[idZalogowanegoUzytkownika-1].ustawHaslo(noweHasloUzytkownika);
+
+    fstream bazaDanychUzytkownikow;
+
+    //Zapis do pliku
+    bazaDanychUzytkownikow.open("Uzytkownicy.txt", ios::out);
+
+    int numerWierszaWBazieDanychUzytkownikow = 1;
+
+    vector<Uzytkownik>::iterator koniecWektora = uzytkownicy.end();
+    for(vector<Uzytkownik>::iterator itr = uzytkownicy.begin(); itr !=koniecWektora; ++itr)
+    {
+        if (numerWierszaWBazieDanychUzytkownikow != 1)
+        {
+            bazaDanychUzytkownikow << endl;
+        }
+
+        bazaDanychUzytkownikow << itr->pobierzId() << '|';
+        bazaDanychUzytkownikow << itr->pobierzLogin() << '|';
+        bazaDanychUzytkownikow << itr->pobierzHaslo() << '|';
+
+        numerWierszaWBazieDanychUzytkownikow++;
+    }
+
+    bazaDanychUzytkownikow.close();
+    //Koniec zapisu do pliku
+
+    cout << "Haslo zostalo zmienione!";
+    Sleep(1500);
+    system( "cls" );
+
+}

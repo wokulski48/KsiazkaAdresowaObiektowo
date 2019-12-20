@@ -30,6 +30,7 @@ public:
     void edytujAdresata();
     int usunAdresata();
     void wyszukajPoImieniu();
+    void wyszukajPoNazwisku();
 };
 
 #endif

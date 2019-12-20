@@ -33,6 +33,7 @@ public:
     void wylogujUzytkownika();
     int pobierzIdZalogowanegoUzytkownika();
     void ustawIdZalogowanegoUzytkownika(int noweIdZalogowanegoUzytkownika);
+    void zmianaHaslaUzytkownika();
 };
 
 #endif
