@@ -134,7 +134,8 @@ void KsiazkaAdresowa::menuGlowneProgramu()
                 adresatMenadzer.wyswietlWszystkichAdresatow();
                 break;
             case '5':
-                adresatMenadzer.ustawIdOstatniegoAdresata(adresatMenadzer.usunAdresata());
+                //adresatMenadzer.ustawIdOstatniegoAdresata(adresatMenadzer.usunAdresata());
+                adresatMenadzer.usunAdresata(uzytkownikMenadzer.pobierzIdZalogowanegoUzytkownika());
                 break;
             case '6':
                 adresatMenadzer.edytujAdresata();

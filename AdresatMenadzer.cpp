@@ -237,7 +237,7 @@ void AdresatMenadzer::edytujAdresata()
     }
 }
 
-int AdresatMenadzer::usunAdresata()
+void AdresatMenadzer::usunAdresata(int idZalogowanegoUzytkownika)
 {
     system("cls");
     if (!adresaci.empty())
@@ -263,7 +263,7 @@ int AdresatMenadzer::usunAdresata()
             cout << "Adresat o podanym ID nie istnieje!";
             Sleep(1500);
             system( "cls" );
-            return plikZAdresatami.pobierzIdOstatniegoAdresata();
+            //return plikZAdresatami.pobierzIdOstatniegoAdresata();
         }
 
         cout << "Potwierdz usuniecie adresata klawiszem 't': ";
@@ -297,20 +297,27 @@ int AdresatMenadzer::usunAdresata()
             system( "cls" );
         }
 
+        /*
         if(adresaci.empty())
         {
             return 0;
         }
         else
         {
-            return adresaci[adresaci.size()].pobierzId();
+            return adresaci[adresaci.size()-1].pobierzId();
         }
+        */
+
+        adresaci.clear();
+
+        wczytajAdresatowZalogowanegoUzytkownikaZPliku(idZalogowanegoUzytkownika);
 
     }
     else
     {
         cout << "Ksiazka adresowa jest pusta." << endl << endl;
         system("pause");
+        //return 0;
     }
 }
 

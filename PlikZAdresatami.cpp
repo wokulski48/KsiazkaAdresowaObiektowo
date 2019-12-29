@@ -183,13 +183,13 @@ void PlikZAdresatami::zapiszBazeDanychAdresatow(int idEdytowanegoAdresata, int t
         {
             while(getline(bazaDanychAdresatow, pobranaLiniaTekstuZBazyDanych))
             {
-                if (numerWierszaWBazieDanychAdresatow != 1)
-                {
-                    tymczasowaBazaDanychAdresatow << endl;
-                }
-
                 if(atoi(pobranaLiniaTekstuZBazyDanych.substr(0, podajPozycjeZnakuRozdzialuIdAdresata(pobranaLiniaTekstuZBazyDanych)).c_str()) != idEdytowanegoAdresata)
                 {
+                    if (numerWierszaWBazieDanychAdresatow != 1)
+                    {
+                        tymczasowaBazaDanychAdresatow << endl;
+                    }
+
                     tymczasowaBazaDanychAdresatow << pobranaLiniaTekstuZBazyDanych;
 
                     numerWierszaWBazieDanychAdresatow++;
