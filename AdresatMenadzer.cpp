@@ -263,7 +263,7 @@ void AdresatMenadzer::usunAdresata(int idZalogowanegoUzytkownika)
             cout << "Adresat o podanym ID nie istnieje!";
             Sleep(1500);
             system( "cls" );
-            //return plikZAdresatami.pobierzIdOstatniegoAdresata();
+            return;
         }
 
         cout << "Potwierdz usuniecie adresata klawiszem 't': ";
@@ -295,6 +295,7 @@ void AdresatMenadzer::usunAdresata(int idZalogowanegoUzytkownika)
             cout << endl << "Nie usunieto adresata!";
             Sleep(1500);
             system( "cls" );
+            return;
         }
 
         /*
@@ -317,7 +318,6 @@ void AdresatMenadzer::usunAdresata(int idZalogowanegoUzytkownika)
     {
         cout << "Ksiazka adresowa jest pusta." << endl << endl;
         system("pause");
-        //return 0;
     }
 }
 
